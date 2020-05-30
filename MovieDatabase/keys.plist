@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>authV4</key>
+	<string>API Key (v3 auth)</string>
+	<key>authV3</key>
+	<string>API Read Access Token (v4 auth)</string>
+</dict>
+</plist>

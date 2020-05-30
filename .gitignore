@@ -1,0 +1,10 @@
+DerivedData/
+MovieDatabase.xcodeproj/xcuserdata
+MovieDatabase.app*
+MovieDatabase.ipa
+
+fastlane/report.xml
+fastlane/README.md
+fastlane/Preview.html
+fastlane/screenshots/screenshots.html
+fastlane/screenshots/**/*.png

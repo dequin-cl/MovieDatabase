@@ -10,6 +10,7 @@ import UIKit
 
 protocol MovieDetailsPresentationLogic {
     func presentMovieDetails(response: MovieDetails.Display.Response)
+    func presentMoviePoster(response: MovieDetails.DisplayPoster.Response)
 }
 
 class MovieDetailsPresenter: MovieDetailsPresentationLogic {
@@ -44,4 +45,8 @@ class MovieDetailsPresenter: MovieDetailsPresentationLogic {
         viewController?.displayMovieDetails(viewModel: viewModel)
     }
 
+    func presentMoviePoster(response: MovieDetails.DisplayPoster.Response) {
+        let viewModel = MovieDetails.DisplayPoster.ViewModel(path: response.path)
+        viewController?.displayPoster(viewModel: viewModel, completion: nil)
+    }
 }

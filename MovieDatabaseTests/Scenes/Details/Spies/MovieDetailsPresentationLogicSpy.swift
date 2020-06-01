@@ -16,4 +16,11 @@ class MovieDetailsPresentationLogicSpy: MovieDetailsPresentationLogic {
         presentMovieDetailsGotCalled = true
         presentMovieDetailsResponse = response
     }
+
+    var presentMoviePosterGotCalled = false
+    var presentMoviePosterResponse: MovieDetails.DisplayPoster.Response?
+    func presentMoviePoster(response: MovieDetails.DisplayPoster.Response) {
+        presentMoviePosterGotCalled = true
+        presentMoviePosterResponse = response
+    }
 }

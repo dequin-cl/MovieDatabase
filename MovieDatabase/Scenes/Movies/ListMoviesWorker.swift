@@ -17,11 +17,11 @@ enum ListMoviesStrings: String, CaseIterable, Localizable {
 }
 
 class ListMoviesWorker {
-    let popularMoviesURL = "https://api.themoviedb.org/3/movie/popular"
-    let apikey = "api_key="
-    let language = "language="
-    let page = "page="
-    var lastPageRequested = 0
+    private let popularMoviesURL = "https://api.themoviedb.org/3/movie/popular"
+    private let apikey = "api_key="
+    private let language = "language="
+    private let page = "page="
+    private var lastPageRequested = 0
 
     func fetchPopularMovies(pageNumber: Int,
                             session: URLSession = URLSession(configuration: .default),

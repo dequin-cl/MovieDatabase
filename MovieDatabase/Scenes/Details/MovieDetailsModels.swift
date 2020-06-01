@@ -23,6 +23,15 @@ enum MovieDetails {
             let releaseDate: String
         }
     }
+
+    enum DisplayPoster {
+        struct Response {
+            let path: String
+        }
+        struct ViewModel {
+            let path: String
+        }
+    }
 }
 
 // swiftlint:enable nesting

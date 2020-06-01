@@ -34,5 +34,13 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
             releaseDate: movie.releaseDate ?? ""
         )
         presenter?.presentMovieDetails(response: response)
+
+        if let posterPath = movie.posterPath {
+            worker.fetchPosterImageURL(posterPath: posterPath) { (fullPath) in
+                let response = MovieDetails.DisplayPoster.Response(path: fullPath)
+                self.presenter?.presentMoviePoster(response: response)
+            }
+        }
+
     }
 }

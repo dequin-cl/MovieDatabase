@@ -52,13 +52,17 @@ class MovieDetailsInteractorTests: XCTestCase {
     // MARK: Test doubles
 
     class MovieDetailsWorkerSpy: MovieDetailsWorker {
-
+        var fetchPosterImageURLGotCalled = false
+        override func fetchPosterImageURL(posterPath: String, session: URLSession = URLSession(configuration: .default), apiKeys: APIKeys = APIKeysLoader.loadKeys(), completionHandler: @escaping (String) -> Void) {
+            fetchPosterImageURLGotCalled = true
+            completionHandler("test")
+        }
     }
 
     // MARK: Tests
     func testProcessMovieDetailsCallsPresenter() {
         // Given
-        let movie3 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: "movie3", voteAverage: nil, overview: "overview", releaseDate: "2000-12-01")
+        let movie3 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: "path", id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: "movie3", voteAverage: nil, overview: "overview", releaseDate: "2000-12-01")
         sut.movie = movie3
         // When
         sut.processMovie()
@@ -67,6 +71,9 @@ class MovieDetailsInteractorTests: XCTestCase {
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.title, movie3.title)
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.overview, movie3.overview)
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.releaseDate, movie3.releaseDate)
+        XCTAssertTrue(spyWorker.fetchPosterImageURLGotCalled)
+        XCTAssertTrue(spyPresenter.presentMoviePosterGotCalled)
+        XCTAssertEqual(spyPresenter.presentMoviePosterResponse?.path, "test")
     }
 
     func testProcessMovieEmptyDetailsCallsPresenter() {
@@ -80,6 +87,7 @@ class MovieDetailsInteractorTests: XCTestCase {
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.title, "--")
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.overview, "")
         XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.releaseDate, "")
+        XCTAssertFalse(spyWorker.fetchPosterImageURLGotCalled)
     }
 
 }

@@ -73,6 +73,17 @@ class MovieDetailsPresenterTests: XCTestCase {
         XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.overview, overview)
         XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.releaseDate, "")
     }
+
+    func testPresentMoviePosterCallsViewController() {
+        // Given
+        let path = "Test"
+        let response = MovieDetails.DisplayPoster.Response(path: path)
+        // When
+        sut.presentMoviePoster(response: response)
+        // Then
+        XCTAssertTrue(spyViewController.displayPosterGotCalled)
+        XCTAssertEqual(spyViewController.displayPosterViewModel?.path, path)
+    }
 }
 
 // swiftlint:enable line_length

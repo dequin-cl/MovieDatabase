@@ -81,6 +81,21 @@ class MovieDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.labelMovieOverview.text, overview)
         XCTAssertEqual(sut.labelMovieReleaseDate.text, releaseDate)
     }
+
+    func testDisplayPoster() {
+        // Given
+        let path = "http://tmdb.org"
+        let viewModel = MovieDetails.DisplayPoster.ViewModel(path: path)
+        let exp = expectation(description: "Loading stories")
+
+        // When
+        sut.displayPoster(viewModel: viewModel) {
+            exp.fulfill()
+        }
+        // Then
+        waitForExpectations(timeout: 3)
+        XCTAssertNotNil(sut.imagePosterContainer.kf.indicator)
+    }
 }
 
 // swiftlint:enable line_length

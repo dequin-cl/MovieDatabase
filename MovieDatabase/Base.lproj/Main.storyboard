@@ -55,39 +55,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxc-cX-9Rl">
-                                <rect key="frame" x="20" y="44" width="374" height="36"/>
+                                <rect key="frame" x="20" y="88" width="374" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-LP-QPu">
-                                <rect key="frame" x="20" y="88" width="374" height="18"/>
+                                <rect key="frame" x="20" y="132" width="374" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIn-EQ-7ni">
-                                <rect key="frame" x="20" y="114" width="374" height="18"/>
+                                <rect key="frame" x="20" y="158" width="374" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-50-1w8">
+                                <rect key="frame" x="0.0" y="200" width="414" height="662"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="UEH-50-1w8" secondAttribute="trailing" id="Aod-eR-PT2"/>
                             <constraint firstItem="bRB-LP-QPu" firstAttribute="top" secondItem="Yxc-cX-9Rl" secondAttribute="bottom" constant="8" id="BDN-vw-IDT"/>
+                            <constraint firstItem="UEH-50-1w8" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" id="D2K-3r-QM8"/>
                             <constraint firstItem="wIn-EQ-7ni" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="Lrl-sU-8Lk"/>
                             <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="bRB-LP-QPu" secondAttribute="trailing" constant="20" id="Tbk-Ol-PD4"/>
                             <constraint firstItem="bRB-LP-QPu" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="Thk-wB-Yu8"/>
                             <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="wIn-EQ-7ni" secondAttribute="trailing" constant="20" id="YY3-bG-7OO"/>
+                            <constraint firstItem="UEH-50-1w8" firstAttribute="top" secondItem="wIn-EQ-7ni" secondAttribute="bottom" constant="24" id="Yb6-bF-cdF"/>
+                            <constraint firstItem="ZVh-uj-8lg" firstAttribute="bottom" secondItem="UEH-50-1w8" secondAttribute="bottom" id="beX-ZF-Up6"/>
                             <constraint firstItem="wIn-EQ-7ni" firstAttribute="top" secondItem="bRB-LP-QPu" secondAttribute="bottom" constant="8" id="d5o-jO-G6v"/>
                             <constraint firstItem="Yxc-cX-9Rl" firstAttribute="top" secondItem="ZVh-uj-8lg" secondAttribute="top" id="eeJ-Mi-kcH"/>
                             <constraint firstItem="Yxc-cX-9Rl" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="ewZ-0t-3be"/>
+                            <constraint firstAttribute="bottom" secondItem="UEH-50-1w8" secondAttribute="bottom" priority="750" id="pJw-RS-vgM"/>
                             <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="Yxc-cX-9Rl" secondAttribute="trailing" constant="20" id="zbK-Vo-Cgd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVh-uj-8lg"/>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="egs-Ax-Yv8"/>
                     <connections>
+                        <outlet property="imagePosterContainer" destination="UEH-50-1w8" id="vWG-tz-ib0"/>
                         <outlet property="labelMovieOverview" destination="bRB-LP-QPu" id="mpU-Qo-j8i"/>
                         <outlet property="labelMovieReleaseDate" destination="wIn-EQ-7ni" id="t6p-ib-oxL"/>
                         <outlet property="labelMovieTitle" destination="Yxc-cX-9Rl" id="bBU-GN-kVI"/>
@@ -95,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hM6-Dp-yS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1903" y="3"/>
+            <point key="canvasLocation" x="1032" y="683"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IsJ-BL-JxG">
@@ -114,6 +124,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8c-qJ-OUP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121.73913043478262" y="2.6785714285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oa6-Wv-lSX">
+            <objects>
+                <navigationController storyboardIdentifier="DummyNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="stS-Fa-BmQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2jP-Rd-R1t">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fdi-kM-R6H" kind="relationship" relationship="rootViewController" id="Rvp-Yy-i4j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LaP-mH-trF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122" y="683"/>
         </scene>
     </scenes>
 </document>

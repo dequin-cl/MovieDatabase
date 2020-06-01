@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol MovieDetailsDisplayLogic: AnyObject {
     func displayMovieDetails(viewModel: MovieDetails.Display.ViewModel)
+    func displayPoster(viewModel: MovieDetails.DisplayPoster.ViewModel,
+                       completion: (()->Void)?)
 }
 
 class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
@@ -20,6 +23,7 @@ class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
     @IBOutlet weak var labelMovieTitle: UILabel!
     @IBOutlet weak var labelMovieOverview: UILabel!
     @IBOutlet weak var labelMovieReleaseDate: UILabel!
+    @IBOutlet weak var imagePosterContainer: UIImageView!
 
     // MARK: Object lifecycle
 
@@ -77,5 +81,17 @@ class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
         labelMovieTitle.text = viewModel.title
         labelMovieOverview.text = viewModel.overview
         labelMovieReleaseDate.text = viewModel.releaseDate
+    }
+
+    func displayPoster(viewModel: MovieDetails.DisplayPoster.ViewModel,
+                       completion: (()->Void)? = nil) {
+
+        if let url = URL(string: viewModel.path) {
+            DispatchQueue.main.async {
+                self.imagePosterContainer.kf.indicatorType = .activity
+                self.imagePosterContainer.kf.setImage(with: url)
+                completion?()
+            }
+        }
     }
 }

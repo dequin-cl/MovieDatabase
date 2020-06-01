@@ -1,5 +1,7 @@
 DerivedData/
 MovieDatabase.xcodeproj/xcuserdata
+xcuserdata/
+MovieDatabase.xcodeproj/project.xcworkspace/xcuserdata/
 MovieDatabase.app*
 MovieDatabase.ipa
 

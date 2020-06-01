@@ -24,10 +24,8 @@ class ListMoviesPresentationLogicSpy: ListMoviesPresentationLogic {
         presentLocalizeResponse = response
     }
 
-//     var presentSomethingCalled = false
-//     var presentSomethingResponse: ListMovies.Something.Response?
-//     func presentSomething(response: ListMovies.Something.Response) {
-//        presentSomethingCalled = true
-//        presentSomethingResponse = response
-//    }
+    var presentMovieDetailsGotCalled = false
+    func presentMovieDetails() {
+        presentMovieDetailsGotCalled = true
+    }
 }

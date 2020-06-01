@@ -12,15 +12,18 @@ protocol ListMoviesBusinessLogic {
     func fetchMovies()
     func processWillDisplay(request: ListMovies.PrefetchMovies.Request)
     func localize()
+    func processSelection(request: ListMovies.Selection.Request)
 }
 
 protocol ListMoviesDataStore {
-    //var name: String { get set }
+    var selectedMovie: Movie? { get set }
 }
 
 class ListMoviesInteractor: ListMoviesBusinessLogic, ListMoviesDataStore {
     var presenter: ListMoviesPresentationLogic?
     var worker: ListMoviesWorker = ListMoviesWorker()
+
+    var selectedMovie: Movie?
 
     var lastPageFetched: Int = 1
     var popularity: Popularity?
@@ -48,5 +51,10 @@ class ListMoviesInteractor: ListMoviesBusinessLogic, ListMoviesDataStore {
     func localize() {
         let response = ListMovies.LocalizeText.Response(title: ListMoviesStrings.Movies)
         presenter?.presentLocalize(response: response)
+    }
+
+    func processSelection(request: ListMovies.Selection.Request) {
+        selectedMovie = movies[request.row]
+        presenter?.presentMovieDetails()
     }
 }

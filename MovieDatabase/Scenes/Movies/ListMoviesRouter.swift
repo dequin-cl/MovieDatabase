@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol ListMoviesRoutingLogic {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToMovieDetails(segue: UIStoryboardSegue?)
 }
 
 protocol ListMoviesDataPassing {
@@ -22,32 +22,29 @@ class ListMoviesRouter: NSObject, ListMoviesRoutingLogic, ListMoviesDataPassing 
 
     // MARK: Routing
 
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
+    func routeToMovieDetails(segue: UIStoryboardSegue?) {
+      if let segue = segue {
+        let destinationVC = segue.destination as! MovieDetailsViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToMovieDetails(source: dataStore!, destination: &destinationDS)
+      } else {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToMovieDetails(source: dataStore!, destination: &destinationDS)
+        navigateToMovieDetails(source: viewController!, destination: destinationVC)
+      }
+    }
 
     // MARK: Navigation
 
-    //func navigateToSomewhere(source: ListMoviesViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
+    func navigateToMovieDetails(source: ListMoviesViewController, destination: MovieDetailsViewController) {
+      source.show(destination, sender: source)
+    }
 
     // MARK: Passing data
 
-    //func passDataToSomewhere(source: ListMoviesDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+    func passDataToMovieDetails(source: ListMoviesDataStore, destination: inout MovieDetailsDataStore) {
+      destination.movie = source.selectedMovie
+    }
 }

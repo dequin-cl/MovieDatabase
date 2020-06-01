@@ -69,6 +69,15 @@ class ListMoviesPresenterTests: XCTestCase {
         XCTAssertTrue(spyViewController.displayLocalizedGotCalled)
         XCTAssertEqual(spyViewController.displayLocalizedViewModel?.title, ListMoviesStrings.Movies.localized)
     }
+
+    func testPresentMoviesDetails() {
+        // Given
+
+        // When
+        sut.presentMovieDetails()
+        // Then
+        XCTAssertTrue(spyViewController.routeToMovieDetailsGotCalled)
+    }
 }
 
 // swiftlint:enable line_length

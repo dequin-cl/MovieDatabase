@@ -11,6 +11,7 @@ import UIKit
 protocol ListMoviesPresentationLogic {
     func presentMovies(response: ListMovies.FetchMovies.Response)
     func presentLocalize(response: ListMovies.LocalizeText.Response)
+    func presentMovieDetails()
 }
 
 class ListMoviesPresenter: ListMoviesPresentationLogic {
@@ -28,5 +29,9 @@ class ListMoviesPresenter: ListMoviesPresentationLogic {
     func presentLocalize(response: ListMovies.LocalizeText.Response) {
         let viewModel = ListMovies.LocalizeText.ViewModel(title: response.title.localized)
         viewController?.displayLocalized(viewModel: viewModel)
+    }
+
+    func presentMovieDetails() {
+        viewController?.routeToMovieDetails()
     }
 }

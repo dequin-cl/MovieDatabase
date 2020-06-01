@@ -36,4 +36,10 @@ enum ListMovies {
             let title: String
         }
     }
+
+    enum Selection {
+        struct Request {
+            let row: Int
+        }
+    }
 }

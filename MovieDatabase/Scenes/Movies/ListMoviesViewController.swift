@@ -11,6 +11,7 @@ import UIKit
 protocol ListMoviesDisplayLogic: class {
     func displayMovies(viewModel: ListMovies.FetchMovies.ViewModel)
     func displayLocalized(viewModel: ListMovies.LocalizeText.ViewModel)
+    func routeToMovieDetails()
 }
 
 class ListMoviesViewController: UITableViewController, ListMoviesDisplayLogic {
@@ -86,14 +87,24 @@ class ListMoviesViewController: UITableViewController, ListMoviesDisplayLogic {
         }
     }
 
+    func routeToMovieDetails() {
+        router?.routeToMovieDetails(segue: nil)
+    }
+
+    // MARK:-  UITableView Delegate
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        interactor?.processWillDisplay(request: ListMovies.PrefetchMovies.Request(row: indexPath.row))
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.processSelection(request: ListMovies.Selection.Request(row: indexPath.row))
+    }
+
+    // MARK:-  UITableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let moviesTitles = moviesTitles else { return 0 }
 
         return moviesTitles.count
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        interactor?.processWillDisplay(request: ListMovies.PrefetchMovies.Request(row: indexPath.row))
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

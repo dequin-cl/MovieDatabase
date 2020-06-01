@@ -104,6 +104,26 @@ class ListMoviesViewControllerTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.moviesTitles.count, 3)
     }
+
+    func testSelectCellCallsInteractor() {
+        // Given
+
+        // When
+        sut.tableView(sut.tableView, didSelectRowAt: IndexPath(row: 10, section: 0))
+        // Then
+        XCTAssertTrue(spyInteractor.processSelectionGotCalled)
+        XCTAssertEqual(spyInteractor.processSelectionRequest?.row, 10)
+    }
+
+    func testRouteToDetailsCallsRouter() {
+        // Given
+
+        // When
+        sut.routeToMovieDetails()
+        // Then
+        XCTAssertTrue(spyRouter.routeToMovieDetailsGotCalled)
+        XCTAssertNil(spyRouter.routeToMovieDetailsSegue)
+    }
 }
 
 // swiftlint:enable line_length

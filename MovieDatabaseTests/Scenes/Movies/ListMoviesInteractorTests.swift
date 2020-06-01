@@ -101,6 +101,22 @@ class ListMoviesInteractorTests: XCTestCase {
         XCTAssertTrue(spyPresenter.presentMoviesGotCalled)
         XCTAssertEqual(spyPresenter.presentMoviesResponse?.movies.count, 1)
     }
+
+    func testProcessSelection() {
+        // Given
+        let movie1 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: nil, voteAverage: nil, overview: nil, releaseDate: nil)
+        let movie2 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: "movie2", voteAverage: nil, overview: nil, releaseDate: nil)
+        let movie3 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: "movie3", voteAverage: nil, overview: nil, releaseDate: nil)
+
+        let request = ListMovies.Selection.Request(row: 2)
+        sut.movies = [movie1, movie2, movie3]
+        // When
+        sut.processSelection(request: request)
+        // Then
+        XCTAssertNotNil(sut.selectedMovie)
+        XCTAssertEqual(sut.selectedMovie, movie3)
+        XCTAssertTrue(spyPresenter.presentMovieDetailsGotCalled)
+    }
 }
 
 // swiftlint:enable line_length

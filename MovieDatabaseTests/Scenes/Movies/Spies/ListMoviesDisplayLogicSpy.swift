@@ -22,4 +22,9 @@ class ListMoviesDisplayLogicSpy: ListMoviesDisplayLogic {
         displayLocalizedGotCalled = true
         displayLocalizedViewModel = viewModel
     }
+
+    var routeToMovieDetailsGotCalled = false
+    func routeToMovieDetails() {
+        routeToMovieDetailsGotCalled = true
+    }
 }

@@ -9,6 +9,7 @@
 @testable import MovieDatabase
 
 class ListMoviesBusinessLogicSpy: ListMoviesBusinessLogic {
+
     var fetchMoviesGotCalled = false
     func fetchMovies() {
         fetchMoviesGotCalled = true
@@ -24,5 +25,12 @@ class ListMoviesBusinessLogicSpy: ListMoviesBusinessLogic {
     var localizeGotCalled = false
     func localize() {
         localizeGotCalled = true
+    }
+
+    var processSelectionGotCalled = false
+    var processSelectionRequest: ListMovies.Selection.Request?
+    func processSelection(request: ListMovies.Selection.Request) {
+        processSelectionGotCalled = true
+        processSelectionRequest = request
     }
 }

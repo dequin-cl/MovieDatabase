@@ -9,7 +9,7 @@
 import Foundation
 
 protocol MovieDetailsBusinessLogic {
-//    func doSomething(request: MovieDetails.Something.Request)
+    func processMovie()
 }
 
 protocol MovieDetailsDataStore {
@@ -21,14 +21,18 @@ class MovieDetailsInteractor: MovieDetailsBusinessLogic, MovieDetailsDataStore {
     var presenter: MovieDetailsPresentationLogic?
     var worker: MovieDetailsWorker = MovieDetailsWorker()
 
-    var movie: Movie? 
+    var movie: Movie?
 
     // MARK: Methods
 
-//     func doSomething(request: MovieDetails.Something.Request) {
-//        worker.doSomeWork()
-//
-//        let response = MovieDetails.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+    func processMovie() {
+        guard let movie = movie else { fatalError("This scene should not be called without a Movie") }
+
+        let response = MovieDetails.Display.Response(
+            title: movie.title ?? "--",
+            overview: movie.overview ?? "",
+            releaseDate: movie.releaseDate ?? ""
+        )
+        presenter?.presentMovieDetails(response: response)
+    }
 }

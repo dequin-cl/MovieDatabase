@@ -10,4 +10,10 @@
 
 class MovieDetailsPresentationLogicSpy: MovieDetailsPresentationLogic {
 
+    var presentMovieDetailsGotCalled = false
+    var presentMovieDetailsResponse: MovieDetails.Display.Response?
+    func presentMovieDetails(response: MovieDetails.Display.Response) {
+        presentMovieDetailsGotCalled = true
+        presentMovieDetailsResponse = response
+    }
 }

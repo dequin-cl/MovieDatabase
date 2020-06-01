@@ -61,7 +61,26 @@ class MovieDetailsViewControllerTests: XCTestCase {
     }
 
     // MARK: Tests
+    func testShouldCallProcessMovie() {
+        // Given
+        // When
+        // Then
+        XCTAssertTrue(spyInteractor.processMovieGotCalled)
+    }
 
+    func testDisplayMovieDetails() {
+        // Given
+        let title = "Test"
+        let overview = "Test2"
+        let releaseDate = "Test3"
+        let viewModel = MovieDetails.Display.ViewModel(title: title, overview: overview, releaseDate: releaseDate)
+        // When
+        sut.displayMovieDetails(viewModel: viewModel)
+        // Then
+        XCTAssertEqual(sut.labelMovieTitle.text, title)
+        XCTAssertEqual(sut.labelMovieOverview.text, overview)
+        XCTAssertEqual(sut.labelMovieReleaseDate.text, releaseDate)
+    }
 }
 
 // swiftlint:enable line_length

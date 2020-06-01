@@ -9,20 +9,18 @@
 // swiftlint:disable nesting
 enum MovieDetails {
 
-    enum Something {
+    enum Display {
         struct Request {
         }
-        enum Response {
-            struct Success {
-            }
-            struct Failure {
-            }
+        struct Response {
+            let title: String
+            let overview: String
+            let releaseDate: String
         }
-        enum ViewModel {
-            struct Success {
-            }
-            struct Failure {
-            }
+        struct ViewModel {
+            let title: String
+            let overview: String
+            let releaseDate: String
         }
     }
 }

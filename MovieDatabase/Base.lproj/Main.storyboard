@@ -53,9 +53,45 @@
                     <view key="view" contentMode="scaleToFill" id="6Qi-E8-LSK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie's title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yxc-cX-9Rl">
+                                <rect key="frame" x="20" y="44" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-LP-QPu">
+                                <rect key="frame" x="20" y="88" width="374" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIn-EQ-7ni">
+                                <rect key="frame" x="20" y="114" width="374" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bRB-LP-QPu" firstAttribute="top" secondItem="Yxc-cX-9Rl" secondAttribute="bottom" constant="8" id="BDN-vw-IDT"/>
+                            <constraint firstItem="wIn-EQ-7ni" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="Lrl-sU-8Lk"/>
+                            <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="bRB-LP-QPu" secondAttribute="trailing" constant="20" id="Tbk-Ol-PD4"/>
+                            <constraint firstItem="bRB-LP-QPu" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="Thk-wB-Yu8"/>
+                            <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="wIn-EQ-7ni" secondAttribute="trailing" constant="20" id="YY3-bG-7OO"/>
+                            <constraint firstItem="wIn-EQ-7ni" firstAttribute="top" secondItem="bRB-LP-QPu" secondAttribute="bottom" constant="8" id="d5o-jO-G6v"/>
+                            <constraint firstItem="Yxc-cX-9Rl" firstAttribute="top" secondItem="ZVh-uj-8lg" secondAttribute="top" id="eeJ-Mi-kcH"/>
+                            <constraint firstItem="Yxc-cX-9Rl" firstAttribute="leading" secondItem="ZVh-uj-8lg" secondAttribute="leading" constant="20" id="ewZ-0t-3be"/>
+                            <constraint firstItem="ZVh-uj-8lg" firstAttribute="trailing" secondItem="Yxc-cX-9Rl" secondAttribute="trailing" constant="20" id="zbK-Vo-Cgd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZVh-uj-8lg"/>
                     </view>
+                    <connections>
+                        <outlet property="labelMovieOverview" destination="bRB-LP-QPu" id="mpU-Qo-j8i"/>
+                        <outlet property="labelMovieReleaseDate" destination="wIn-EQ-7ni" id="t6p-ib-oxL"/>
+                        <outlet property="labelMovieTitle" destination="Yxc-cX-9Rl" id="bBU-GN-kVI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hM6-Dp-yS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

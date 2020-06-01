@@ -9,16 +9,39 @@
 import UIKit
 
 protocol MovieDetailsPresentationLogic {
-//    func presentSomething(response: MovieDetails.Something.Response)
+    func presentMovieDetails(response: MovieDetails.Display.Response)
 }
 
 class MovieDetailsPresenter: MovieDetailsPresentationLogic {
     weak  var viewController: MovieDetailsDisplayLogic?
 
+    private lazy var intoDateFormatter: ISO8601DateFormatter = {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [
+            .withYear,
+            .withDashSeparatorInDate,
+            .withMonth,
+            .withDay
+        ]
+        return dateFormatter
+    }()
+
+    private lazy var intoStringFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter
+    }()
     // MARK: Methods
 
-//     func presentSomething(response: MovieDetails.Something.Response) {
-//        let viewModel = MovieDetails.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+    func presentMovieDetails(response: MovieDetails.Display.Response) {
+
+        let date = intoDateFormatter.date(from: response.releaseDate)
+        let releaseDateString = date != nil ? intoStringFormatter.string(from: date!): ""
+        let viewModel = MovieDetails.Display.ViewModel(
+            title: response.title,
+            overview: response.overview,
+            releaseDate: releaseDateString)
+        viewController?.displayMovieDetails(viewModel: viewModel)
+    }
+
 }

@@ -56,6 +56,31 @@ class MovieDetailsInteractorTests: XCTestCase {
     }
 
     // MARK: Tests
+    func testProcessMovieDetailsCallsPresenter() {
+        // Given
+        let movie3 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: "movie3", voteAverage: nil, overview: "overview", releaseDate: "2000-12-01")
+        sut.movie = movie3
+        // When
+        sut.processMovie()
+        // Then
+        XCTAssertTrue(spyPresenter.presentMovieDetailsGotCalled)
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.title, movie3.title)
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.overview, movie3.overview)
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.releaseDate, movie3.releaseDate)
+    }
+
+    func testProcessMovieEmptyDetailsCallsPresenter() {
+        // Given
+        let movie3 = Movie(popularity: nil, voteCount: nil, video: nil, posterPath: nil, id: nil, adult: nil, backdropPath: nil, originalLanguage: nil, originalTitle: nil, genreIDS: nil, title: nil, voteAverage: nil, overview: nil, releaseDate: nil)
+        sut.movie = movie3
+        // When
+        sut.processMovie()
+        // Then
+        XCTAssertTrue(spyPresenter.presentMovieDetailsGotCalled)
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.title, "--")
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.overview, "")
+        XCTAssertEqual(spyPresenter.presentMovieDetailsResponse?.releaseDate, "")
+    }
 
 }
 

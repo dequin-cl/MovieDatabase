@@ -10,4 +10,8 @@
 
 class MovieDetailsBusinessLogicSpy: MovieDetailsBusinessLogic {
 
+    var processMovieGotCalled = false
+    func processMovie() {
+        processMovieGotCalled = true
+    }
 }

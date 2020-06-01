@@ -44,7 +44,35 @@ class MovieDetailsPresenterTests: XCTestCase {
     }
 
     // MARK: Tests
+    func testPresentMovieDetailsFormatsDateAndCallsView() {
+        // Given
+        let title = "Test"
+        let overview = "Test1"
+        let releaseDate = "2019-09-17"
+        let response = MovieDetails.Display.Response(title: title, overview: overview, releaseDate: releaseDate)
+        // When
+        sut.presentMovieDetails(response: response)
+        // Then
+        XCTAssertTrue(spyViewController.displayMovieDetailsGotCalled)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.title, title)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.overview, overview)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.releaseDate, "2019")
+    }
 
+    func testPresentEmptyDateMovieDetailsFormatsDateAndCallsView() {
+        // Given
+        let title = "--"
+        let overview = ""
+        let releaseDate = ""
+        let response = MovieDetails.Display.Response(title: title, overview: overview, releaseDate: releaseDate)
+        // When
+        sut.presentMovieDetails(response: response)
+        // Then
+        XCTAssertTrue(spyViewController.displayMovieDetailsGotCalled)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.title, title)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.overview, overview)
+        XCTAssertEqual(spyViewController.displayMovieDetailsViewModel?.releaseDate, "")
+    }
 }
 
 // swiftlint:enable line_length

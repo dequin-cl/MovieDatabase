@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MovieDetailsDisplayLogic: AnyObject {
-    //     func displaySomething(viewModel: MovieDetails.Something.ViewModel)
+    func displayMovieDetails(viewModel: MovieDetails.Display.ViewModel)
 }
 
 class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
@@ -17,6 +17,9 @@ class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
     var router: (NSObjectProtocol & MovieDetailsRoutingLogic & MovieDetailsDataPassing)?
 
     //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var labelMovieTitle: UILabel!
+    @IBOutlet weak var labelMovieOverview: UILabel!
+    @IBOutlet weak var labelMovieReleaseDate: UILabel!
 
     // MARK: Object lifecycle
 
@@ -60,17 +63,19 @@ class MovieDetailsViewController: UIViewController, MovieDetailsDisplayLogic {
 
     override  func viewDidLoad() {
         super.viewDidLoad()
-//        doSomething()
+        processSelectedMovie()
     }
 
     // MARK: Methods
 
-//     func doSomething() {
-//        let request = MovieDetails.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
+     func processSelectedMovie() {
 
-//     func displaySomething(viewModel: MovieDetails.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
-//    }
+        interactor?.processMovie()
+    }
+
+    func displayMovieDetails(viewModel: MovieDetails.Display.ViewModel) {
+        labelMovieTitle.text = viewModel.title
+        labelMovieOverview.text = viewModel.overview
+        labelMovieReleaseDate.text = viewModel.releaseDate
+    }
 }
